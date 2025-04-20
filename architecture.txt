@@ -1,0 +1,15 @@
+# AWS VPC Project Architecture
+
+1. VPC with CIDR: 10.0.0.0/16
+2. Two public subnets (one in each AZ)
+3. Two private subnets (one in each AZ)
+4. Internet Gateway attached to VPC
+5. NAT Gateway for private instances' outbound internet access
+6. Bastion Host (EC2) in public subnet with SSH access
+7. Auto Scaling Group with 2 EC2s in private subnets (no public IP)
+8. Application Load Balancer (ALB) in public subnet
+9. ALB forwards requests to target group with 2 EC2s
+10. Security Groups:
+    - Bastion SG: SSH from local IP
+    - Private EC2 SG: Allow SSH from Bastion SG and HTTP from ALB SG
+11. NACLs configured for subnet-level traffic control

@@ -1,0 +1,14 @@
+# General Notes
+
+- Use same `awslogin.pem` for all EC2 access (store securely in D: drive).
+- Health checks are critical for proper load balancer routing.
+- Ensure port 8000 is open in the EC2 Security Group.
+- ALB only routes to healthy instances – unconfigured EC2s will show as unhealthy.
+- You can test failover by manually shutting down the active EC2.
+- Consider using S3 for scalable hosting in future.
+- MobaXterm is used to SSH into the Bastion Host, from there to private instances.
+
+# Common Issues
+- 502 Bad Gateway: Check Python server is running, port 8000 allowed, and health checks pass.
+- Connection Timeout: Check your security group and instance reachability.
+- "Address already in use": Run `sudo lsof -i :8000` to find and kill conflicting processes.

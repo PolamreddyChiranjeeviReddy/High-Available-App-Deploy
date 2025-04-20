@@ -1,0 +1,17 @@
+# SSH Commands
+ssh -i "D:/awslogin.pem" ec2-user@<Bastion_Public_IP>
+ssh -i "awslogin.pem" ec2-user@<Private_Instance_Internal_IP>
+
+# File creation in EC2
+vim index.html
+
+# Paste your HTML content
+# Press `i` to enter insert mode, write your HTML
+# Press `Esc`, then type `:wq` and hit Enter to save and exit
+
+# Start the web server
+sudo python3 -m http.server 8000
+
+# EC2 related AWS CLI
+aws ec2 describe-instances
+aws ec2 describe-security-groups

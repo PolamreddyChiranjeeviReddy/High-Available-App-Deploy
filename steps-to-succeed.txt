@@ -1,0 +1,22 @@
+# 🪜 Steps to Succeed in AWS VPC Project
+
+1. Create a VPC with 2 Public and 2 Private subnets across different AZs.
+2. Attach an Internet Gateway and update public route table.
+3. Create a NAT Gateway for outbound traffic from private subnet.
+4. Create a security group for:
+   - Bastion: Allow SSH (port 22) from your IP.
+   - Private EC2: Allow SSH from Bastion SG, HTTP from ALB SG.
+5. Launch Bastion EC2 in public subnet with public IP.
+6. Launch Private EC2s via Auto Scaling Group into private subnets.
+7. SSH into Bastion EC2 via MobaXterm using `awslogin.pem`.
+8. From inside Bastion, SSH into private EC2s using internal IP.
+9. On one private EC2:
+   - Use `vim index.html` to create a basic HTML page.
+   - Run `sudo python3 -m http.server 8000` to host the app.
+10. Create an Application Load Balancer (ALB):
+    - Listener: Port 80
+    - Target Group: Port 8000, attach both private EC2s.
+    - Health Check Path: `/`
+11. Open the ALB DNS link. You will:
+    - Sometimes see the hosted HTML if the request hits configured EC2
+    - See error if routed to the empty EC2 (helps test health checks)
