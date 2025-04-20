@@ -36,7 +36,7 @@ The goal is to:
    - Create a custom VPC with a public and private subnet.
    - Enable Auto-assign public IP for the public subnet.
 
-   ![](assets/architecture.png)
+   ![](./assets/architecture.png)
    ![](assets/auto-scaling-group.png)
 
 
